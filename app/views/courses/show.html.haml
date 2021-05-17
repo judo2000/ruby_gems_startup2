@@ -1,3 +1,8 @@
+- content_for :title do 
+  Judo2000 
+  \|
+  = @course.title
+
 = link_to 'Courses', courses_path
 \/
 = link_to @course.title, course_path(@course)
