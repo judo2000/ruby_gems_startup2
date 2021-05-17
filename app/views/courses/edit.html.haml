@@ -1,0 +1,11 @@
+.card 
+  .card-header 
+    %h3 
+      .fa.fa-graduation-cap
+      Editing course
+  .card-body 
+    = render 'form'
+  .card-footer
+    = link_to 'Show', @course
+    \|
+    = link_to 'Back', courses_path
