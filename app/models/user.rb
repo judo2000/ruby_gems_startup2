@@ -1,10 +1,15 @@
 class User < ApplicationRecord
-  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable, :confirmable
     
+  
+  rolify
+  
+  has_many :courses
+  has_many :enrollments 
+  
   def to_s 
     email 
   end 
@@ -12,8 +17,6 @@ class User < ApplicationRecord
   def username 
       self.email.split(/@/).first
   end
-
-  has_many :courses
 
   extend FriendlyId
   friendly_id :email, use: :slugged
@@ -36,6 +39,10 @@ class User < ApplicationRecord
   def online?
     updated_at > 2.minutes.ago
   end
+  
+  def buy_course(course) 
+    self.enrollments.create(course: course, price: course.price)
+  end
 
   private 
 
@@ -44,4 +51,5 @@ class User < ApplicationRecord
       errors.add(:roles, "A user must have at least one role!")
     end
   end
+
 end
