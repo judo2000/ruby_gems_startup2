@@ -1,10 +1,12 @@
 - content_for :title do 
   Judo2000 
   \|
-  All Enrollments
+  = action_name.humanize
+  enrollments
 
 %h3
   .text-center
+    = action_name.humanize
     Enrollments 
     .badge.badge-info 
       = @enrollments.count 
