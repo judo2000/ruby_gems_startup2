@@ -4,10 +4,19 @@ class EnrollmentsController < ApplicationController
   def index
     #@enrollments = Enrollment.all
     #@pagy, @enrollments = pagy(Enrollment.all)
+    
+    @ransack_path = enrollments_path
 
     @q = Enrollment.ransack(params[:q])
     @pagy, @enrollments = pagy(@q.result.includes(:user))
     authorize @enrollments
+  end
+
+  def my_students 
+    @ransack_path = my_students_enrollments_path
+    @q = Enrollment.joins(:course).where(course: {user: current_user}).ransack(params[:q])
+    @pagy, @enrollments =  pagy(@q.result.includes(:user))
+    render 'index'
   end
 
   def show
