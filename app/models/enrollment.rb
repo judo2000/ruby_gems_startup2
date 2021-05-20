@@ -15,6 +15,9 @@ class Enrollment < ApplicationRecord
   friendly_id :to_s, use: :slugged
 
   scope :pending_review, -> { where(rating: [0, nil, ""], review: [0, nil, ""]) }
+  scope :reviewed, -> { where.not(review: [0, nil, ""]) }
+  scope :latest_good_reviews, -> { order(rating: :desc, created_at: :desc).limit(3) }
+  
   def to_s
     user.to_s + " " + course.to_s
   end

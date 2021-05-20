@@ -7,9 +7,9 @@
     .fa.fa-graduation-cap 
     = link_to enrollment.course, course_path(enrollment.course)
   .card-body
-    - enrollment.rating.times do
-      .text-warning.fa.fa-star
-    /%b= enrollment.rating
+    /- enrollment.rating
+    .text-warning.fa.fa-star
+    %b= enrollment.rating
     .fa.fa-comment
     = enrollment.review 
   - if current_user 
