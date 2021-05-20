@@ -43,6 +43,7 @@ class CoursesController < ApplicationController
   
   def show
     @lessons = @course.lessons
+    @enrollments_with_reviews = @course.enrollments.reviewed
   end
 
   def new
@@ -84,10 +85,13 @@ class CoursesController < ApplicationController
 
   def destroy
     authorize @course
-    @course.destroy
-    respond_to do |format|
-      format.html { redirect_to courses_url, notice: "Course was successfully destroyed." }
-      format.json { head :no_content }
+    if @course.destroy
+      respond_to do |format|
+        format.html { redirect_to courses_url, notice: "Course was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    else 
+      redirect_to @course, alert: "This course has enrollments and cannot be destroyed."
     end
   end
 

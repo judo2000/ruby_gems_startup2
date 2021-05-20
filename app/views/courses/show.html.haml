@@ -9,11 +9,48 @@
 %p
 
 .row 
-  .col-lg-6 
-    = render 'courses/course', course: @course
-  .col-lg-6
-    - if policy(@course).owner?
-      = link_to 'Add lesson', new_course_lesson_path(@course, @lesson), class: 'btn btn-sm btn-primary btn-block'
+  .col-lg-8.order-1.order-lg-1
+    %h3.display-6
+      .fa.fa-graduation-cap
+      = @course.title
+    %hr.my-3
+    .row 
+    .fa.fa-clock 
+    = @course.updated_at.strftime("%h %Y")
+    .row 
+    .fa.fa-globe-europe
+    = @course.language
+    .row
+    .fa.fa-signal
+    = @course.level
+    %hr.my-3
+    = @course.description
+    %hr.my-3
+    %h4
+      .fa.fa-tasks
+      = pluralize(@course.lessons_count, 'lesson')
+      /= @course.lessons_count
+      /Lessons:
+      .float-right
+        .fa.fa-spinner 
+        = number_to_percentage(@course.progress(current_user), precision: 0)
+    %ul.list-group
+      - @lessons.each do |lesson|
+        %li.list-group-item
+          = render 'lessons/lesson_preview', lesson: lesson
+    %p
+    %h4
+      .fa.fa-comment
+      = pluralize(@enrollments_with_reviews.count, 'review')
+
+      /Reviews:
+      /= @enrollments_with_reviews.count
+      
+    - @enrollments_with_reviews.each do |enrollment|
+      = render 'enrollments/enrollment', enrollment: enrollment
       %p
-    - @lessons.each do |lesson|
-      = render 'lessons/lesson', lesson: lesson
+  .col-lg-4.order-0.order-lg-1
+    .sticky-top
+      = render 'courses/course', course: @course
+    %p
+    
