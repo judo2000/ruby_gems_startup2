@@ -1,40 +1,45 @@
-- content_for :title do 
-  Judo2000 
-  \/
+- content_for :title do
+  Corsego 
+  |
   Course
-  = @course.title 
-  \/
-  Lesson 
+  = @course.title
+  |
+  Lesson
+  #{@lesson.row_order_rank + 1}.
   = @lesson.title
 
-= link_to course_path(@course) do 
-  .fa.fa-graduation-cap 
+
+= link_to 'Courses', courses_path
+|
+= link_to course_path(@lesson.course) do
+  .fa.fa-graduation-cap
   = @lesson.course.title
-\/
-= link_to course_lesson_path(@course, @lesson) do 
+|
+= link_to course_lesson_path(@course, @lesson) do
   .fa.fa-check-square
   = @lesson.title
-\/
 %p
 
--# = @lesson.user_lessons.where(user: current_user).first.impressions
-
-.row 
-  .col-8 
+/= @lesson.user_lessons.where(user: current_user).first.impressions
+.row
+  .col-lg-8
     = render 'lessons/lesson', lesson: @lesson
-  .col-4
+    %p
+  .col-lg-4
     %ul.list-group
       %li.list-group-item
-        = link_to course_path(@course) do 
-          .fa.fa-graduation-cap 
+        = link_to course_path(@lesson.course) do
+          .fa.fa-graduation-cap
           = @lesson.course.title
         .row
-        .fa.fa-spinner 
+        .fa.fa-spinner
         = number_to_percentage(@course.progress(current_user), precision: 0)
+
       - @lessons.each do |lesson|
         - if @lesson.present? && lesson == @lesson
           %li.list-group-item.list-group-item-success
             = render 'lessons/lesson_preview', lesson: lesson
-        - else 
+        - else
           %li.list-group-item
             = render 'lessons/lesson_preview', lesson: lesson
+
