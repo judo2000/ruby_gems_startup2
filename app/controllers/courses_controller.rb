@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [ :show, :edit, :update, :destroy, :approve, :unapprove ]
+  skip_before_action :authenticate_user!, :only => [ :show ]
+  before_action :set_course, only: [ :show, :edit, :update, :destroy, :approve, :unapprove, :analytics ]
 
   def index
     # if params[:title]
@@ -59,6 +60,10 @@ class CoursesController < ApplicationController
     redirect_to @course, notice: "Course unapproved and hidden!"
   end
   
+  def analytics
+    authorize @course, :owner?
+  end
+
   def show
     authorize @course
     @lessons = @course.lessons

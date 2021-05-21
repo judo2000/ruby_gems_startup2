@@ -10,8 +10,14 @@ module RubyGemsStartup
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
-    config.time_zone = 'Mountain Time (US & Canada)'
-    config.active_record.default_timezone = :local 
+    #config.time_zone = 'Mountain Time (US & Canada)'
+    #config.active_record.default_timezone = :local 
+    
+    if Rails.env.development? #for rails-erd gem to generate a diagram
+      def eager_load!
+        Zeitwerk::Loader.eager_load_all
+      end
+    end
     
     # Configuration for the application, engines, and railties goes here.
     #

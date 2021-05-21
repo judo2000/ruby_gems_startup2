@@ -45,19 +45,24 @@
     Learn on your schedule 
 
 %hr
-%h2
-  .fa.fa-user-graduate
-  Continue learning 
-.card-columns 
-  - @purchased_courses.each do |course|
-    = render 'courses/course', course: course
-%hr
+- if current_user
+  %h2
+    .fa.fa-user-graduate
+    Continue learning 
+  .card-columns 
+    - @purchased_courses.each do |course|
+      = render 'courses/course', course: course
+  .text-right
+    = link_to 'See all my purchased courses', purchased_courses_path
+  %hr
 %h2
   .fa.fa-chart-line
   Popular courses 
 .card-columns 
   - @popular.each do |course|
     = render 'courses/course', course: course
+.text-right
+  = link_to 'More popular courses', courses_path(courses_search: {s: 'enrollment_count des' })
 %hr
 %h2
   .fa.fa-star
@@ -65,6 +70,8 @@
 .card-columns 
   - @top_rated.each do |course|
     = render 'courses/course', course: course
+.text-right
+  = link_to 'Best rated courses', courses_path(courses_search: {s: 'rating des' })
 %hr
 %h2
   .fa.fa-clock
@@ -72,7 +79,8 @@
 .card-columns 
   - @latest.each do |course|
     = render 'courses/course', course: course
-
+.text-right
+  = link_to 'Most recent courses', courses_path(courses_search: {s: 'created_at des' })
 %hr
 %h2
   .fa.fa-comment
