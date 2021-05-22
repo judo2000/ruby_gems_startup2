@@ -321,7 +321,6 @@ DEPENDENCIES
   haml-rails (~> 2.0)
   jbuilder (~> 2.7)
   listen (~> 3.3)
-  mini_magick
   pagy
   pg
   public_activity
