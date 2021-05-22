@@ -77,3 +77,4 @@ gem 'rails-erd', group: :development
 gem 'ranked-model'
 gem "carrierwave"
 gem "fog-aws"
+gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
