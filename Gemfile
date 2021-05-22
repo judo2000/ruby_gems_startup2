@@ -76,6 +76,4 @@ gem 'groupdate'
 gem 'rails-erd', group: :development
 gem 'ranked-model'
 gem "carrierwave"
-#gem "mime-types"
 gem "fog-aws"
-#gem 'mini_magick'
