@@ -78,4 +78,4 @@ gem 'ranked-model'
 gem "carrierwave"
 #gem "mime-types"
 gem "fog-aws"
-gem 'mini_magick'
+#gem 'mini_magick'
