@@ -5,6 +5,12 @@
 
   .form-inputs
     = f.input :title
+    = f.label :logo
+    - if @course.logo.attached?
+      = image_tag @course.logo, width: "200px"
+      .row
+    = f.file_field :logo
+    .row.pt-3
     = f.label :description
     = f.rich_text_area  :description
     %small= f.error :description, class: 'text-danger'

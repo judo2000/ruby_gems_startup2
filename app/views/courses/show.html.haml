@@ -15,6 +15,9 @@
       %h3
         .fa.fa-graduation-cap
         = @course.title
+        .row
+        - if @course.logo.attached? 
+          = image_tag @course.logo, width: "200px"
         /.row
         /HAS AVATAR?
         /= @course.avatar.attached?

@@ -13,6 +13,14 @@ local:
 #   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
 #   region: us-east-1
 #   bucket: your_own_bucket
+aws:
+  aws_access_key_id:     Rails.application.credentials.aws[:digitalocean_spaces_key],                        # required unless using use_iam_profile
+    aws_secret_access_key: Rails.application.credentials.aws[:digitalocean_spaces_secret],
+    #digitalocean_spaces_bucket: Rails.application.credentials.digitalocean_spaces_bucket,
+    use_iam_profile:       true,                         # optional, defaults to false
+    region:                'nyc3',                  # optional, defaults to 'us-east-1'
+    host:                  'nyc3.digitaloceanspaces.com',             # optional, defaults to nil
+    endpoint:              'https://nyc3.digitaloceanspaces.com' # optional, defaults to nil
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
