@@ -7,18 +7,18 @@
     = f.input :title
     = f.label :logo
     .row
-    /- if @course.logo.attached?
-    /- if @course.logo
-      /= image_tag @course.logo.url
-      /= image_tag @course.logo, width: "200px"
-      /= @course.logo.content_type
-      /= @course.logo.key
-      .row
-      = @course.logo.filename
-      /= @course.logo.metadata
-      .row
-      = @course.logo.byte_size
-      /= @course.logo.checksum
+    -# /- if @course.logo.attached?
+    -# /- if @course.logo
+    -#   /= image_tag @course.logo.url
+    -#   /= image_tag @course.logo, width: "200px"
+    -#   /= @course.logo.content_type
+    -#   /= @course.logo.key
+    -#   .row
+    -#   = @course.logo.filename
+    -#   /= @course.logo.metadata
+    -#   .row
+    -#   = @course.logo.byte_size
+    -#   /= @course.logo.checksum
       .row
     = f.file_field :logo
     %small= f.error :logo, class: 'text-danger'
