@@ -2,12 +2,7 @@
   .card-header 
     .fa.fa-graduation-cap
     = link_to course.title, course_path(course)
-    /- if course.logo.attached?
-    /- if course.logo
-      /.card-img-top
-        /= image_tag course.logo.url
-        /= image_tag course.logo, height: '200px', width: '100%'
-        /= image_tag course.logo.variant(resize_to_limit: [100, 100])
+    
   .card-body 
     %small= simple_format(course.short_description)
   .card-footer
