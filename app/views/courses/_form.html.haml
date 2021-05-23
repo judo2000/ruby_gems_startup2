@@ -5,23 +5,15 @@
 
   .form-inputs
     = f.input :title
-    = f.label :logo
+    -# = f.label :logo
     .row
-    -# /- if @course.logo.attached?
-    -# /- if @course.logo
-    -#   /= image_tag @course.logo.url
-    -#   /= image_tag @course.logo, width: "200px"
-    -#   /= @course.logo.content_type
-    -#   /= @course.logo.key
-    -#   .row
-    -#   = @course.logo.filename
-    -#   /= @course.logo.metadata
-    -#   .row
-    -#   = @course.logo.byte_size
-    -#   /= @course.logo.checksum
-      .row
-    = f.file_field :logo
-    %small= f.error :logo, class: 'text-danger'
+    - if @course.logo
+      = image_tag @course.logo.url, height: '200px'
+    
+    .row
+    -# = f.file_field :logo
+    = f.input :logo
+    -# %small= f.error :logo, class: 'text-danger'
     .row.pt-3
     = f.label :description
     = f.rich_text_area  :description
