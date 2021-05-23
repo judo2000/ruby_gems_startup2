@@ -8,8 +8,8 @@
     = f.label :logo
     .row
     /- if @course.logo.attached?
-    - if @course.logo
-      = image_tag @course.logo.url
+    /- if @course.logo
+      /= image_tag @course.logo.url
       /= image_tag @course.logo, width: "200px"
       /= @course.logo.content_type
       /= @course.logo.key
