@@ -78,6 +78,7 @@ gem 'ranked-model'
 #gem "carrierwave"
 #gem "fog-aws"
 #gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
-gem 'aws-sdk-s3', require: false
+#gem 'aws-sdk-s3', require: false
+gem "fog-aws"
 gem 'active_storage_validations'
 gem 'image_processing'
