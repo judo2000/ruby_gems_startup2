@@ -19,7 +19,7 @@ class Course < ApplicationRecord
   scope :unapproved, -> { where(approved: false) }
 
   has_one_attached :logo
-  
+
   def to_s
     title
   end

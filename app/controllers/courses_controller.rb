@@ -125,6 +125,7 @@ class CoursesController < ApplicationController
     end
 
     def course_params
-      params.require(:course).permit(:title, :description, :short_description, :price, :language, :level, :published, :logo)
+      params.require(:course).permit(:title, :description, :short_description, :price, 
+        :language, :level, :published, :logo)
     end
 end
