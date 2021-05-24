@@ -12,6 +12,7 @@
     - if @lesson.video.present?
       - video_filename = @lesson.video.url.split('https://nyc3.digitaloceanspaces.com/judo/uploads/lesson/video/')[1]
       = video_filename
+      = link_to "Remove video and thumbnail", delete_video_course_lesson_path(@course, @lesson), method: :delete, data: { confirm: 'Are you sure?' }
     = f.input :video 
     - if @lesson.thumbnail.present?
       - thumbnail_filename = @lesson.thumbnail.url.split('https://nyc3.digitaloceanspaces.com/judo/uploads/lesson/thumbnail/')[1]

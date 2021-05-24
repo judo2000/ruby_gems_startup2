@@ -20,6 +20,7 @@
       - else 
         %video(controls="true" width="100%" preload="metadata")
           %source{src: @lesson.video.url, type:"#{@lesson.video.content_type}"}
+      
     %p
     = lesson.content
   - if policy(lesson).edit?

@@ -1,5 +1,23 @@
 class LessonsController < ApplicationController
-  before_action :set_lesson, only: %i[ show edit update destroy ]
+  before_action :set_lesson, only: %i[ show edit update destroy delete_video ]
+
+  def delete_video 
+    authorize @lesson, :edit? 
+    if @lesson.video
+      @video = @lesson.video 
+      @video.remove!
+      @lesson.video = ''
+      @lesson.save
+    end
+    if @lesson.thumbnail
+      @thumbnail = @lesson.thumbnail 
+      @thumbnail.remove!
+      @lesson.thumbnail = ''
+      @lesson.save
+    end
+    redirect_to edit_course_lesson_path(@course, @lesson), notice: "Video successfully deleted"
+
+  end
 
   def sort
     @course = Course.friendly.find(params[:course_id])
