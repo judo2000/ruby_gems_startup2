@@ -4,12 +4,19 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    = f.input :title
+    = f.input :title, input_html: { autocomplete: 'off' }
     = f.label :content
     = f.rich_text_area  :content
     %small= f.error :content, class: 'text-danger'
     %p
-    
+    - if @lesson.video.present?
+      - video_filename = @lesson.video.url.split('https://nyc3.digitaloceanspaces.com/judo/uploads/lesson/video/')[1]
+      = video_filename
+    = f.input :video 
+    - if @lesson.thumbnail.present?
+      - thumbnail_filename = @lesson.thumbnail.url.split('https://nyc3.digitaloceanspaces.com/judo/uploads/lesson/thumbnail/')[1]
+      = thumbnail_filename
+    = f.input :thumbnail
     /= f.input :content
     /= f.association :course
     /= f.input :course_id, input_html: {value: @lesson.course_id || params[:course_id]}, as: :hidden

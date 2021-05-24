@@ -4,10 +4,17 @@ class Lesson < ApplicationRecord
 
   #Course.find_each { |course| Course.reset_counters(course.id, :lessons) }
   validates :title, :content, :course, presence: true
-  validates :title, uniqueness: true, length: { :maximum => 70 }
-  
+  validates :title, length: { :maximum => 70 }
+  validates_uniqueness_of :title, scope: :course_id
   has_rich_text :content
-
+  mount_uploader :video, VideoUploader
+  mount_uploader :thumbnail, ThumbnailUploader
+  
+  validates :thumbnail, presence: true, if: :video_present?
+  def video_present?
+    self.video.present?
+  end
+  
   extend FriendlyId
   friendly_id :title, use: :slugged
 

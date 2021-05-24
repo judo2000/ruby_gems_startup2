@@ -13,6 +13,14 @@
       = lesson.title
   /- if policy(lesson).show?
   .card-body
+    - if @lesson.video.present?
+      - if @lesson.thumbnail.present?
+        %video(controls="true" poster="#{url_for @lesson.thumbnail.url}" width="100%" preload="metadata")
+          %source{src: @lesson.video.url, type:"#{@lesson.video.content_type}"}
+      - else 
+        %video(controls="true" width="100%" preload="metadata")
+          %source{src: @lesson.video.url, type:"#{@lesson.video.content_type}"}
+    %p
     = lesson.content
   - if policy(lesson).edit?
     .card-footer
