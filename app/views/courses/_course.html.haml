@@ -4,7 +4,7 @@
     = link_to course.title, course_path(course)
     - if course.logo
       .card-img-top
-        = image_tag course.logo.url
+        = image_tag course.logo.url, height: '200px', width: '100%'
     
   .card-body 
     %small= simple_format(course.short_description)
