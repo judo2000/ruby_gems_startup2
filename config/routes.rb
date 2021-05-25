@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   end
   
   resources :users, only: [:index, :edit, :show, :update]
+
+  resources :youtube, only: :show
   
   namespace :charts do 
     get 'users_per_day'

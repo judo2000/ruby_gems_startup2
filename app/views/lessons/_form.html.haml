@@ -5,9 +5,10 @@
 
   .form-inputs
     = f.input :title, input_html: { autocomplete: 'off' }
-    = f.label :content
-    = f.rich_text_area  :content
-    %small= f.error :content, class: 'text-danger'
+    = f.input :content, as: :rich_text_area
+    -# = f.label :content
+    -# = f.rich_text_area  :content
+    -# %small= f.error :content, class: 'text-danger'
     %p
     - if @lesson.video.present?
       - video_filename = @lesson.video.url.split('https://nyc3.digitaloceanspaces.com/judo/uploads/lesson/video/')[1]

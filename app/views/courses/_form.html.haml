@@ -7,7 +7,7 @@
     = f.input :title
     -# = f.label :logo
     .row
-    - if @course.logo
+    - if @course.logo?
       = image_tag @course.logo.url, height: '200px'
     
     .row
@@ -15,9 +15,10 @@
     = f.input :logo
     -# %small= f.error :logo, class: 'text-danger'
     .row.pt-3
-    = f.label :description
-    = f.rich_text_area  :description
-    %small= f.error :description, class: 'text-danger'
+    = f.input :description, as: :rich_text_area
+    -# = f.label :description
+    -# = f.rich_text_area  :description
+    -# %small= f.error :description, class: 'text-danger'
     = f.input :short_description 
     = f.input :language, collection: Course.languages, include_blank: true
     = f.input :level, collection: Course.levels, include_blank: true 

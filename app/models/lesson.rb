@@ -10,7 +10,7 @@ class Lesson < ApplicationRecord
   mount_uploader :video, VideoUploader
   mount_uploader :thumbnail, ThumbnailUploader
   
-  validates :thumbnail, presence: true, if: :video_present?
+  #validates :thumbnail, presence: true, if: :video_present?
   def video_present?
     self.video.present?
   end

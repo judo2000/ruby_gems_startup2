@@ -15,12 +15,11 @@
   .card-body
     - if @lesson.video.present?
       - if @lesson.thumbnail.present?
-        %video(controls="true" poster="#{url_for @lesson.thumbnail.url}" width="100%" preload="metadata")
-          %source{src: @lesson.video.url, type:"#{@lesson.video.content_type}"}
+        = content_tag :video, id: 'my-video', poster: @lesson.thumbnail.url do
+          = tag :source, src: @lesson.video.url, type: @lesson.video.content_type
       - else 
-        %video(controls="true" width="100%" preload="metadata")
-          %source{src: @lesson.video.url, type:"#{@lesson.video.content_type}"}
-      
+        = content_tag :video, id: 'my-video' do
+          = tag :source, src: @lesson.video.url, type: @lesson.video.content_type
     %p
     = lesson.content
   - if policy(lesson).edit?
