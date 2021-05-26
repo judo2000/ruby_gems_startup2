@@ -82,3 +82,4 @@ gem "carrierwave"
 gem "fog-aws"
 gem 'active_storage_validations'
 gem 'image_processing'
+gem 'recaptcha'
