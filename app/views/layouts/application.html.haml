@@ -2,7 +2,10 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{description: 'Online Learning and Skill sharing platform'}/
+    %meta{keywords: 'online education, course platform, video tutorials, udemy clone'}/
+    %meta{author: 'Scott Moore'}/
+    = favicon_link_tag 'logo.png'
     /%title RubyGemsStartup
     %title 
       = content_for?(:title) ? yield(:title) : 'Judo2000'
@@ -12,6 +15,8 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    - if Rails.env.production?
+      = render 'layouts/google_analytics'
   %body
     = render "layouts/header"
     = render "layouts/messages"

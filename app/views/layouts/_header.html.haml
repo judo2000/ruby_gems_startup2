@@ -1,5 +1,6 @@
-%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-  %a.navbar-brand{:href => "/"} Rubygems
+%nav.navbar.navbar-expand-lg.navbar-dark.purple-background
+  %a.navbar-brand{:href => "/"}
+    = image_tag 'logo.png', size: '40x40', alt: 'Logo', class: 'rounded'
   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
