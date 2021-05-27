@@ -21,7 +21,8 @@ class User < ApplicationRecord
     unless user
         user = User.create(
            email: data['email'],
-           password: Devise.friendly_token[0,20]
+           password: Devise.friendly_token[0,20],
+           confirmed_at: Time.now # automatically confirm user when account is created
         )
     end
     user
