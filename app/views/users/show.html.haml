@@ -22,6 +22,6 @@
 .row
 = @user.refresh_token
 .row
-= image_tag @user.image, size: '40x40', alt: "#{user.email}", class: 'rounded-circle' 
+= image_tag @user.image, size: '40x40', alt: "#{@user.email}", class: 'rounded-circle' 
 .row
 = @user.name
