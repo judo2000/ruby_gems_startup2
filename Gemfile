@@ -83,4 +83,6 @@ gem "fog-aws"
 gem 'active_storage_validations'
 gem 'image_processing'
 gem 'recaptcha'
-gem 'omniauth-google-oauth2'
+#gem 'omniauth-google-oauth2'
+#gem "omniauth", "~> 1.9.1" # Can not move to 2.0 because of devise - https://github.com/heartcombo/devise/pull/5327
+gem "omniauth-rails_csrf_protection"
