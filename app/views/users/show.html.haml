@@ -6,9 +6,9 @@
 = render 'users/user', user: @user
 
 %br
-= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do
-  .fa.fa-sign-out-alt
-  %b Sign out
+= link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: 'nav-link' do
+  .fab.fa-google
+  Sign in with Google
 %br 
 = @user.provider
 = @user.uid
