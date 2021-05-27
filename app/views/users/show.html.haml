@@ -11,10 +11,17 @@
   Sign in with Google
 %br 
 = @user.provider
+.row
 = @user.uid
+.row
 = @user.token
+.row
 = @user.expires_at
+.row
 = @user.expires
+.row
 = @user.refresh_token
-= @user.image
+.row
+= image_tag @user.image, size: '40x40', alt: "#{user.email}", class: 'rounded-circle' 
+.row
 = @user.name
