@@ -4,3 +4,17 @@
   = @user.username + "'s"
   profile
 = render 'users/user', user: @user
+
+%br
+= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do
+  .fa.fa-sign-out-alt
+  %b Sign out
+%br 
+= @user.provider
+= @user.uid
+= @user.token
+= @user.expires_at
+= @user.expires
+= @user.refresh_token
+= @user.image
+= @user.name

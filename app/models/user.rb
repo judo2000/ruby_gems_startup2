@@ -19,11 +19,17 @@ class User < ApplicationRecord
 
     # Uncomment the section below if you want users to be created if they don't exist
     unless user
-        user = User.create(
-           email: data['email'],
-           password: Devise.friendly_token[0,20],
-           confirmed_at: Time.now # automatically confirm user when account is created
-        )
+      user = User.create(
+        email: data['email'],
+        password: Devise.friendly_token[0,20],
+        confirmed_at: Time.now # automatically confirm user when account is created
+      )
+    else
+      user.name = access_token.info.name
+      user.image = access_token.info.image
+      user.provider = access_token.provider 
+      user.uid = access_token.uid
+      user.save
     end
     user
 end
