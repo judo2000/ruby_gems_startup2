@@ -1,3 +1,15 @@
+GIT
+  remote: https://github.com/heartcombo/devise.git
+  revision: c82e4cf47b02002b2fd7ca31d441cf1043fc634c
+  branch: master
+  specs:
+    devise (4.8.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -91,12 +103,6 @@ GEM
     choice (0.2.0)
     concurrent-ruby (1.1.8)
     crass (1.0.6)
-    devise (4.8.0)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
-      responders
-      warden (~> 1.2.3)
     erubi (1.10.0)
     erubis (2.7.0)
     exception_notification (4.4.3)
@@ -105,6 +111,19 @@ GEM
     excon (0.81.0)
     faker (2.17.0)
       i18n (>= 1.6, < 2)
+    faraday (1.4.2)
+      faraday-em_http (~> 1.0)
+      faraday-em_synchrony (~> 1.0)
+      faraday-excon (~> 1.1)
+      faraday-net_http (~> 1.0)
+      faraday-net_http_persistent (~> 1.1)
+      multipart-post (>= 1.2, < 3)
+      ruby2_keywords (>= 0.0.4)
+    faraday-em_http (1.0.0)
+    faraday-em_synchrony (1.0.0)
+    faraday-excon (1.1.0)
+    faraday-net_http (1.0.1)
+    faraday-net_http_persistent (1.1.0)
     ffi (1.15.0)
     fog-aws (3.10.0)
       fog-core (~> 2.1)
@@ -153,6 +172,7 @@ GEM
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     json (2.5.1)
+    jwt (2.2.3)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -171,13 +191,29 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     multi_json (1.15.0)
+    multi_xml (0.6.0)
+    multipart-post (2.1.1)
     nio4r (2.5.7)
     nokogiri (1.11.3-x86_64-linux)
       racc (~> 1.4)
+    oauth2 (1.4.7)
+      faraday (>= 0.8, < 2.0)
+      jwt (>= 1.0, < 3.0)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (>= 1.2, < 3)
     omniauth (2.0.4)
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
       rack-protection
+    omniauth-google-oauth2 (1.0.0)
+      jwt (>= 2.0)
+      oauth2 (~> 1.1)
+      omniauth (~> 2.0)
+      omniauth-oauth2 (~> 1.7.1)
+    omniauth-oauth2 (1.7.1)
+      oauth2 (~> 1.4)
+      omniauth (>= 1.9, < 3)
     omniauth-rails_csrf_protection (1.0.0)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
@@ -255,6 +291,7 @@ GEM
       rexml
     ruby-vips (2.1.2)
       ffi (~> 1.12)
+    ruby2_keywords (0.0.4)
     ruby_parser (3.15.1)
       sexp_processor (~> 4.9)
     rubyzip (2.3.0)
@@ -327,7 +364,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   carrierwave
   chartkick
-  devise
+  devise!
   exception_notification
   faker
   fog-aws
@@ -337,6 +374,7 @@ DEPENDENCIES
   image_processing
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  omniauth-google-oauth2
   omniauth-rails_csrf_protection
   pagy
   pg

@@ -63,7 +63,8 @@ end
 gem "haml-rails", "~> 2.0"
 gem "simple_form"
 gem "faker"
-gem "devise"
+#gem "devise"
+gem 'devise', github: 'heartcombo/devise', branch: 'master'
 gem 'friendly_id', '~> 5.2.4'
 gem 'ransack'
 gem 'public_activity'
@@ -83,6 +84,6 @@ gem "fog-aws"
 gem 'active_storage_validations'
 gem 'image_processing'
 gem 'recaptcha'
-#gem 'omniauth-google-oauth2'
+gem 'omniauth-google-oauth2'
 #gem "omniauth", "~> 1.9.1" # Can not move to 2.0 because of devise - https://github.com/heartcombo/devise/pull/5327
 gem "omniauth-rails_csrf_protection"
