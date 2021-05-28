@@ -11,11 +11,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     handle_auth "Facebook"
   end
 
-  def failure 
-    recirect_to root_path, alert: "Login failed.  Please try again"
-  end
-
-  def hancle_auth(kind)
+  def handle_auth(kind)
     @user = User.from_omniauth(request.env['omniauth.auth'])
 
     if @user.persisted?
@@ -25,6 +21,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       session['devise.google_data'] = request.env['omniauth.auth'].except('extra') # Removing extra as it can overflow some session stores
       redirect_to new_user_registration_url, alert: @user.errors.full_messages.join("\n")
     end
+  end
+
+  def failure 
+    redirect_to root_path, alert: "Login failed.  Please try again"
   end
 
 end
