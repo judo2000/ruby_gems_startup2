@@ -13,10 +13,11 @@
       = enrollment_button(course)
       .row
       = review_button(course)
+      
   .card-footer
-    .row 
+    .row
       .col-md-6
-        .text-warning.fa.fa-star 
+        .text-warning.fa.fa-star
         = course.average_rating
         /= course.enrollments.count
         %b= course.enrollments_count
