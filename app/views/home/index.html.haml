@@ -101,6 +101,17 @@
   = link_to 'Most recent courses', courses_path(courses_search: {s: 'created_at des' })
 %hr
 %h2
+  .fa.fa-tags
+  Most Popular Tags 
+- @popular_tags.all.each do |tag|
+  = link_to courses_path(courses_search: {course_tags_tag_id_eq: tag.id}) do
+    .badge.badge-info 
+      %h4
+        = tag.name 
+        = tag.course_tags_count
+  
+%hr
+%h2
   .fa.fa-comment
   What our students have to say
 .card-columns 

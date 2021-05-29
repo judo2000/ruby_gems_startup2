@@ -54,7 +54,7 @@
       - @lessons.each do |lesson|
         = content_tag "div", id: "lesson-#{lesson.id}", data: { model_name: lesson.class.name.underscore, update_url: course_lesson_sort_path(@course, lesson)} do
           .list-group-item
-            .fa.fa-sort.all-scroll{:style => "cursor: grab;"}
+            .fa.fa-sort.all-scroll{:style => "cursor: grab; height: 60px;"}
             = render 'lessons/lesson_preview', lesson: lesson
     %p
 
@@ -64,3 +64,11 @@
     .sticky-top
       = render 'courses/course', course: @course
     %p
+
+%h4 Similar Courses 
+= @course.tags.pluck(:id)
+.row
+- Course.all.where.not(id: @course.id).each do |course|
+  - unless @course.tags.pluck(:id).intersection(course.tags.pluck(:id)).count.zero?
+    .card-columns
+      = render 'courses/course', course: course

@@ -1,12 +1,16 @@
 class HomeController < ApplicationController
   skip_before_action :authenticate_user!, :only => [ :index, :privacy_policy ]
   def index
-    @courses = Course.all.limit(3)
+    #@courses = Course.all.limit(3)
     @latest_good_reviews = Enrollment.reviewed.latest_good_reviews
     @latest = Course.latest.published.approved
     @top_rated = Course.top_rated.published.approved
     @popular = Course.popular.published.approved
-    @purchased_courses = Course.joins(:enrollments).where(enrollments: {user: current_user}).order(created_at: :desc).limit(3)
+    if current_user
+      @purchased_courses = Course.joins(:enrollments).where(enrollments: {user: current_user}).order(created_at: :desc).limit(3)
+      @created_courses = current_user.courses
+    end
+    @popular_tags = Tag.all.where.not(course_tags_count: 0).order(course_tags_count: :desc).limit(10)
   end
 
   def activity

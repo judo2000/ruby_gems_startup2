@@ -17,6 +17,9 @@
       /= search_form_for @q do |f|
       = f.label :title
       = f.search_field :title_cont, placeholder: 'Title', class: 'form-control form-controll-sm'
+      = f.label :tag 
+      = f.search_field :course_tags_tag_name_cont, placeholder: 'Tag name', class: 'form-control form-control-sm'
+
       = f.label :description
       = f.search_field :short_description_cont, placeholder: 'Description', class: 'form-control form-controll-sm'
       /= f.search_field :language_cont, placeholder: 'Language', class: 'form-control form-controll-sm'
@@ -40,8 +43,17 @@
       = f.submit
     = link_to @ransack_path, class: 'btn btn-sm btn-secondary' do 
       .fa.fa-sync
-  .col-md-10  
-    .card-columns 
+    .p-2
+    .row 
+    - @tags.all.each do |tag|
+      -# = link_to courses_path(courses_search: {course_tags_tag_id_eq: tag.id}) do
+      = link_to controller: controller_name, action: action_name, courses_search: {course_tags_tag_id_eq: tag.id} do
+        .badge.badge-info 
+          = tag.name 
+          = tag.course_tags_count
+
+  .col-lg-10
+    .card-columns
       - @courses.each do |course|
         = render 'courses/course', course: course
     /!= pagy_nav(@pagy)

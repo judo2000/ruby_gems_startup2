@@ -5,6 +5,7 @@
 
   .form-inputs
     = f.input :title
+    = f.select :tag_ids, @tags.all.pluck(:name, :id), {}, {multiple: true, class: "selectize-tags"}
     -# = f.label :logo
     .row
     - if @course.logo?
