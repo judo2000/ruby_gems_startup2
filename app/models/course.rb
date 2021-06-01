@@ -22,9 +22,10 @@ class Course < ApplicationRecord
   scope :unapproved, -> { where(approved: false) }
 
   #has_one_attached :logo
-  validates :logo, presence: true
-    #content_type: ['image/png', 'image/jpg', 'image/jpeg']
-    #size: { less_than: 500.kilobytes , message: 'File size must be under 500 kilobytes' }
+  validates :logo, presence: true, on: :update
+  # validates :logo,
+  #   content_type: ['image/png', 'image/jpg', 'image/jpeg'],
+  #   size: { less_than: 500.kilobytes , message: 'File size must be under 500 kilobytes' }
   #validates :logo, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'], size: { less_than: 500.kilobytes , message: 'File size must be under 500 kilobytes' }
 
   mount_uploader :logo, LogoUploader

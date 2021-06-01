@@ -1,0 +1,16 @@
+= render layout: 'courses/course_wizard/step' do
+  = simple_form_for @course, url: course_course_wizard_path, method: :put do |f|
+    = f.input :title
+    - if @course.logo?
+      = image_tag @course.logo.url, height: '200px'
+      .row 
+      = @course.logo.filename
+    .row
+    -# = f.file_field :logo
+    = f.input :logo
+    .row.pt-3
+    = f.input :description, as: :rich_text_area
+    = f.input :short_description 
+    
+    = f.button :submit
+  

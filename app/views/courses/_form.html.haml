@@ -5,26 +5,6 @@
 
   .form-inputs
     = f.input :title
-    = f.select :tag_ids, @tags.all.pluck(:name, :id), {}, {multiple: true, class: "selectize-tags"}
-    -# = f.label :logo
-    .row
-    - if @course.logo?
-      = image_tag @course.logo.url, height: '200px'
     
-    .row
-    -# = f.file_field :logo
-    = f.input :logo
-    -# %small= f.error :logo, class: 'text-danger'
-    .row.pt-3
-    = f.input :description, as: :rich_text_area
-    -# = f.label :description
-    -# = f.rich_text_area  :description
-    -# %small= f.error :description, class: 'text-danger'
-    = f.input :short_description 
-    = f.input :language, collection: Course.languages, include_blank: true
-    = f.input :level, collection: Course.levels, include_blank: true 
-    = f.input :price 
-    = f.input :published
-
   .form-actions
     = f.button :submit
