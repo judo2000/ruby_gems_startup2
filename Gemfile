@@ -93,6 +93,6 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-heroku', group: :production
 gem 'wkhtmltopdf-binary', group: :development
 gem 'wicked' #multi-step form
-gem "letter_opener", group: :development
+#gem "letter_opener", group: :development
 gem "cocoon"
 gem 'stripe'
