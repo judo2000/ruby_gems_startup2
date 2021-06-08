@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_28_152907) do
+ActiveRecord::Schema.define(version: 2021_06_07_230029) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 2021_05_28_152907) do
     t.boolean "published", default: false
     t.boolean "approved", default: false
     t.string "logo"
+    t.integer "income", default: 0, null: false
     t.index ["slug"], name: "index_courses_on_slug", unique: true
     t.index ["user_id"], name: "index_courses_on_user_id"
   end

@@ -4,12 +4,14 @@ class Course < ApplicationRecord
  
   belongs_to :user, counter_cache: true
 #User.find_each { |user| User.reset_counters(user.id, :courses) }
-  has_many :lessons, dependent: :destroy
+  has_many :lessons, dependent: :destroy, inverse_of: :course
   has_many :enrollments, dependent: :restrict_with_error
   has_many :user_lessons, through: :lessons
   has_many :course_tags, inverse_of: :course, dependent: :destroy
   has_many :tags, through: :course_tags
   
+  accepts_nested_attributes_for :lessons, reject_if: :all_blank, allow_destroy: true
+
   validates :title, uniqueness: true, length: { :maximum => 70 }
   validates :price, numericality: { greater_than_or_equal_to: 0 }
   
@@ -61,6 +63,11 @@ class Course < ApplicationRecord
     unless self.lessons_count == 0
       user_lessons.where(user: user).count/self.lessons_count.to_f*100
     end
+  end
+
+  def calculate_income 
+    update_column :income, (enrollments.map(&:price).sum)
+    user.calculate_course_income
   end
 
   def update_rating

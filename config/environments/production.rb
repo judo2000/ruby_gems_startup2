@@ -116,7 +116,7 @@ Rails.application.configure do
   # these configuration options.
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.dataActionMailer::Base.smtp_settings = {
-    config.action_mailer.default_url_options = {:host => 'judo200-ruby-gems-startup.herokuapp.com'}
+    config.action_mailer.default_url_options = {:host => 'judo2000-ruby-startup.herokuapp.com'}
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
     :address => "smtpout.secureserver.net",
@@ -128,7 +128,7 @@ Rails.application.configure do
     email: {
       deliver_with: :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
       email_prefix: '[PREFIX] ',
-      sender_address: %{"judo2000-ruby-gems-startup error" <support@judo200-ruby-gems-startup.herokuapp.com>},
+      sender_address: %{"judo2000-ruby-gems-startup error" <support@judo2000-ruby-startup.herokuapp.com>},
       exception_recipients: %w{judo2000@comcast.net.com}
     }
 end
