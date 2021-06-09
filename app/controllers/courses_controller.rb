@@ -89,7 +89,7 @@ class CoursesController < ApplicationController
     @course = Course.new(course_params)
     authorize @course
     @course.description = 'Curriculum description'
-    @course.short_description = 'Marketing description'
+    @course.marketing_description = 'Marketing description'
     @course.user = current_user
     respond_to do |format|
       if @course.save
@@ -135,7 +135,7 @@ class CoursesController < ApplicationController
     end
 
     def course_params
-      params.require(:course).permit(:title, :description, :short_description, :price, 
+      params.require(:course).permit(:title, :description, :marketing_description, :price, 
         :language, :level, :published, :logo, tag_ids: [])
     end
 end

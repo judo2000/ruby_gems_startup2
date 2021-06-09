@@ -7,7 +7,7 @@
         = image_tag course.logo.url, height: '200px', width: '100%'
     
   .card-body 
-    %small= simple_format(course.short_description)
+    %small= simple_format(course.marketing_description)
   .card-footer
     .text-center
       = enrollment_button(course)
@@ -54,7 +54,7 @@
         = link_to 'Add lesson', new_course_lesson_path(course, @lesson), class: 'btn btn-primary btn-sm mr-1'
         = link_to course_course_wizard_index_path(course), class: "btn btn-sm btn-warning mr-1" do 
           .fa.fa-edit 
-          Wizard
+          Edit
         - if policy(course).destroy?
           = link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'
         = link_to analytics_course_path(course), class: 'btn btn-sm btn-info' do

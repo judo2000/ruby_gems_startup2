@@ -1,5 +1,5 @@
 class Course < ApplicationRecord
-  validates :title, :short_description, :language, :level, :price,  presence: true
+  validates :title, :marketing_description, :language, :level, :price,  presence: true
   validates :description, presence: true, length: { :minimum => 5 }
  
   belongs_to :user, counter_cache: true

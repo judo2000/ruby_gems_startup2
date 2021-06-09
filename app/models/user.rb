@@ -17,6 +17,9 @@ class User < ApplicationRecord
     UserMailer.new_user(self).deliver_later
   end
   
+  include PublicActivity::Model
+  tracked only: [:create, :destroy], owner: :itself
+
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(email: data['email']).first

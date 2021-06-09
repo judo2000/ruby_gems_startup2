@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_230029) do
+ActiveRecord::Schema.define(version: 2021_06_08_214319) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2021_06_07_230029) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
     t.string "slug"
-    t.text "short_description"
+    t.text "marketing_description"
     t.string "language", default: "English", null: false
     t.string "level", default: "Beginner", null: false
     t.integer "price", default: 0, null: false
@@ -180,7 +180,7 @@ ActiveRecord::Schema.define(version: 2021_06_07_230029) do
   end
 
 # Could not dump table "users" because of following StandardError
-#   Unknown type '' for column 'current_sign_in_ip'
+#   Unknown type 'inet' for column 'current_sign_in_ip'
 
   create_table "users_roles", id: false, force: :cascade do |t|
     t.integer "user_id"
